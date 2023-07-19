@@ -30,14 +30,32 @@ header {
       font-size: 1.25rem;
       font-weight: 800;
       color: v.$textCtaBg;
+
+      @media screen and (min-width: 675px) {
+        font-size: 1.563rem;
+      }
     }
 
     .sub-heading {
       margin-top: 10px;
       line-height: 2;
       color: v.$texts;
+
+      @media screen and (min-width: 675px) {
+        display: flex;
+
+        :nth-child(1) {
+          margin-right: 2px;
+        }
+      }
+
       p {
         font-size: 0.813rem;
+
+        @media screen and (min-width: 675px) {
+          font-size: 0.845rem;
+          margin-top: 10px;
+        }
       }
     }
   }

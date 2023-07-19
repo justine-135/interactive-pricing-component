@@ -32,29 +32,54 @@ section {
     align-items: center;
     min-height: 100px;
     width: 90%;
+    max-width: 540px;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.137);
 
     .grid-container {
       display: grid;
+      grid-template-areas:
+        "grid1"
+        "grid2"
+        "grid3"
+        "grid4";
       align-items: center;
       width: 90%;
       padding: 20px 0 38px 0;
 
+      @media screen and (min-width: 675px) {
+        width: 80%;
+        justify-content: space-between;
+        grid-template-areas:
+          "grid1 grid3"
+          "grid2 grid2"
+          "grid4 grid4";
+      }
+
       .grid1 {
+        grid-area: grid1;
         font-size: 0.688rem;
         font-weight: 800;
         color: v.$texts;
         letter-spacing: 2px;
         justify-self: center;
+
+        @media screen and (min-width: 675px) {
+          font-size: 0.75rem;
+        }
       }
 
       .grid2 {
+        grid-area: grid2;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 27px 0 27px 0;
+
+        @media screen and (min-width: 675px) {
+          margin: 27px 0 0px 0;
+        }
 
         .slidecontainer {
           display: flex;
@@ -68,7 +93,7 @@ section {
               outline: none;
               background: transparent;
               border-radius: 10px;
-              width: 90%;
+              width: 100%;
 
               &::-webkit-slider-runnable-track {
                 -webkit-appearance: none;
@@ -118,16 +143,20 @@ section {
       }
 
       .grid3 {
+        grid-area: grid3;
         display: flex;
         align-items: center;
         justify-self: center;
 
         :nth-child(1) {
-          font-size: 1.813rem;
+          font-size: 1.875rem;
           color: v.$textCtaBg;
           font-weight: 800;
-          // padding: 0 5px 0 5px;
-          margin-right: 12px;
+          margin-right: 8px;
+
+          @media screen and (min-width: 675px) {
+            font-size: 2.5rem;
+          }
         }
         :nth-child(2) {
           font-size: 0.688rem;
@@ -137,16 +166,22 @@ section {
       }
 
       .grid4 {
+        grid-area: grid4;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 75%;
+        width: 68%;
+        max-width: 232px;
         justify-self: center;
         margin-top: 36px;
 
         span {
-          font-size: 0.625rem;
+          font-size: 0.688rem;
           color: v.$texts;
+
+          @media screen and (min-width: 675px) {
+            font-size: 0.75rem;
+          }
         }
 
         .switch-btn {
@@ -180,22 +215,35 @@ section {
           }
         }
 
-        div {
-          display: flex;
-          align-items: center;
-
+        .discount-container {
+          position: relative;
           span {
             display: block;
           }
 
-          :nth-child(2) {
+          .discount {
+            position: absolute;
+            right: 0;
+            transform: translate(120%, -80%);
+            display: flex;
             background: v.$discountBg;
-            color: v.$discountText;
             font-size: 0.438rem;
             border-radius: 10px;
             padding: 3px;
             font-weight: 800;
-            margin-left: 3px;
+
+            span {
+              color: v.$discountText;
+
+              &:nth-child(2) {
+                display: none;
+                margin-left: 1px;
+
+                @media screen and (min-width: 675px) {
+                  display: block;
+                }
+              }
+            }
           }
         }
       }
@@ -210,31 +258,53 @@ section {
     border-top: 1px solid rgba(128, 128, 128, 0.253);
     padding: 0 0 32px 0;
 
-    ul {
-      margin: 22px 0 28px 0;
-      color: v.$texts;
-      list-style: none;
-      font-size: 0.625rem;
-      text-align: center;
-      line-height: 2;
+    .flex {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
 
-      li {
-        svg {
-          margin-right: 10px;
+      @media screen and (min-width: 675px) {
+        flex-direction: row;
+        width: 80%;
+        justify-content: space-between;
+      }
+
+      ul {
+        margin: 22px 0 28px 0;
+        color: v.$texts;
+        list-style: none;
+        font-size: 0.625rem;
+        text-align: center;
+        line-height: 2;
+
+        @media screen and (min-width: 675px) {
+          text-align: left;
+          font-size: 0.75rem;
+        }
+
+        li {
+          svg {
+            margin-right: 10px;
+          }
         }
       }
-    }
 
-    button {
-      font-size: 0.625rem;
-      font-weight: 800;
-      border: none;
-      border-radius: 60px;
-      background: v.$textCtaBg;
-      color: v.$mainBg;
-      width: 40%;
-      height: 40px;
-      cursor: pointer;
+      button {
+        font-size: 0.625rem;
+        font-weight: 800;
+        border: none;
+        border-radius: 60px;
+        background: v.$textCtaBg;
+        color: v.$mainBg;
+        width: 40%;
+        height: 40px;
+        cursor: pointer;
+
+        @media screen and (min-width: 675px) {
+          font-size: 0.75rem;
+        }
+      }
     }
   }
 }
