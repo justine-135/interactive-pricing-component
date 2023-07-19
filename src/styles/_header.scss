@@ -1,0 +1,44 @@
+@use "variables" as v;
+
+header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+
+  .bg-svg-container {
+    position: absolute;
+    top: 0;
+    z-index: -2;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 95px;
+
+    .circle-svg {
+      position: absolute;
+      z-index: -1;
+      transform: translateY(-20%);
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: v.$textCtaBg;
+    }
+
+    .sub-heading {
+      margin-top: 10px;
+      line-height: 2;
+      color: v.$texts;
+      p {
+        font-size: 0.813rem;
+      }
+    }
+  }
+}
