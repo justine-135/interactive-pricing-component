@@ -1,29 +1,240 @@
 @use "variables" as v;
 
+@mixin thumbStyle {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 1px 10px 25px #11d8c496;
+  cursor: grab;
+}
+@mixin thumb {
+  background: url("../images/icon-slider.svg"), #11d8c5;
+  @include thumbStyle;
+}
+@mixin thumbActive {
+  background: url("../images/icon-slider.svg"), #22afa5;
+  @include thumbStyle;
+}
+
 section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 60px;
+  margin: 60px 0 60px 0;
 
   .billing-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0 10px 0;
     min-height: 100px;
     width: 90%;
     background: white;
     border-radius: 10px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.137);
 
-    .pageview-container {
-      .pageviews {
+    .grid-container {
+      display: grid;
+      align-items: center;
+      width: 90%;
+      padding: 20px 0 38px 0;
+
+      .grid1 {
         font-size: 0.688rem;
         font-weight: 800;
         color: v.$texts;
         letter-spacing: 2px;
+        justify-self: center;
       }
+
+      .grid2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 27px 0 27px 0;
+
+        .slidecontainer {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          input {
+            &[type="range"] {
+              -webkit-appearance: none;
+              appearance: none;
+              outline: none;
+              background: transparent;
+              border-radius: 10px;
+              width: 90%;
+
+              &::-webkit-slider-runnable-track {
+                -webkit-appearance: none;
+                background: v.$emptySliderBar;
+                height: 0.5rem;
+                height: 8px;
+                border-radius: 10px;
+              }
+              &::-moz-range-track {
+                background: v.$emptySliderBar;
+                height: 0.5rem;
+                height: 8px;
+                border-radius: 10px;
+              }
+
+              &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                margin-top: calc((8px / 2) - (40px / 2));
+                @include thumb;
+              }
+              &::-moz-range-thumb {
+                @include thumb;
+              }
+              &::-webkit-progress-value {
+                background-color: v.$on;
+                height: 8px;
+                border-radius: 10px;
+              }
+              &::-moz-range-progress {
+                background-color: v.$on;
+                height: 8px;
+                border-radius: 10px;
+              }
+              &:hover::-moz-range-thumb {
+                background: url("../images/icon-slider.svg"), v.$on;
+                @include thumbStyle;
+              }
+              &:active::-webkit-slider-thumb {
+                @include thumbActive;
+              }
+              &:active::-moz-range-thumb {
+                @include thumbActive;
+              }
+            }
+          }
+        }
+      }
+
+      .grid3 {
+        display: flex;
+        align-items: center;
+        justify-self: center;
+
+        :nth-child(1) {
+          font-size: 1.813rem;
+          color: v.$textCtaBg;
+          font-weight: 800;
+          // padding: 0 5px 0 5px;
+          margin-right: 12px;
+        }
+        :nth-child(2) {
+          font-size: 0.688rem;
+          color: v.$texts;
+          font-weight: 600;
+        }
+      }
+
+      .grid4 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 75%;
+        justify-self: center;
+        margin-top: 36px;
+
+        span {
+          font-size: 0.625rem;
+          color: v.$texts;
+        }
+
+        .switch-btn {
+          display: flex;
+          align-items: center;
+          height: auto;
+          width: 42px;
+          background-color: v.$toggleBg;
+          border-radius: 20px;
+          border: none;
+          padding: 4px;
+          cursor: pointer;
+          transition: all ease-in 150ms;
+
+          &.on {
+            background: v.$on;
+          }
+
+          span {
+            display: block;
+            height: 15px;
+            width: 15px;
+            background-color: white;
+            border-radius: 50%;
+            margin-left: 0;
+            transition: all ease-in 100ms;
+
+            &.on {
+              margin-left: 50%;
+            }
+          }
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+
+          span {
+            display: block;
+          }
+
+          :nth-child(2) {
+            background: v.$discountBg;
+            color: v.$discountText;
+            font-size: 0.438rem;
+            border-radius: 10px;
+            padding: 3px;
+            font-weight: 800;
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .trial-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-top: 1px solid rgba(128, 128, 128, 0.253);
+    padding: 0 0 32px 0;
+
+    ul {
+      margin: 22px 0 28px 0;
+      color: v.$texts;
+      list-style: none;
+      font-size: 0.625rem;
+      text-align: center;
+      line-height: 2;
+
+      li {
+        svg {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    button {
+      font-size: 0.625rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 60px;
+      background: v.$textCtaBg;
+      color: v.$mainBg;
+      width: 40%;
+      height: 40px;
+      cursor: pointer;
     }
   }
 }
