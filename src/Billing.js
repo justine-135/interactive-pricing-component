@@ -14,6 +14,8 @@ const Billing = () => {
 
   const handleToggle = () => {
     toggle ? setToggle(false) : setToggle(true);
+    // console.log(pageViews[bar].cost - 0.25);
+    console.log(toggle);
   };
 
   const handleSliderBar = (e) => {
@@ -51,7 +53,12 @@ const Billing = () => {
             </div>
           </div>
           <div className="grid3">
-            <span>${pageViews[bar].cost.toFixed(2)}</span>
+            <span>
+              $
+              {toggle
+                ? (pageViews[bar].cost - 0.25).toFixed(2)
+                : pageViews[bar].cost.toFixed(2)}
+            </span>
             <span> / month</span>
           </div>
           <div className="grid4">
@@ -62,25 +69,30 @@ const Billing = () => {
             >
               <span className={toggle ? "on" : "off"}></span>
             </button>
-            <div>
+            <div className="discount-container">
               <span>Yearly Billing</span>
-              <span>-25%</span>
+              <div className="discount">
+                <span>-25%</span>
+                <span>discount</span>
+              </div>
             </div>
           </div>
         </div>
         <div className="trial-container">
-          <ul>
-            <li>
-              <Check className="svg" /> Unlimited websites
-            </li>
-            <li>
-              <Check className="svg" /> 100% data ownership
-            </li>
-            <li>
-              <Check className="svg" /> Email reports
-            </li>
-          </ul>
-          <button>Start my trial</button>
+          <div className="flex">
+            <ul>
+              <li>
+                <Check className="svg" /> Unlimited websites
+              </li>
+              <li>
+                <Check className="svg" /> 100% data ownership
+              </li>
+              <li>
+                <Check className="svg" /> Email reports
+              </li>
+            </ul>
+            <button>Start my trial</button>
+          </div>
         </div>
       </div>
     </section>
